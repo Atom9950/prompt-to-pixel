@@ -6,6 +6,7 @@ import { Loader2, Sparkles, Download, RefreshCw, Settings } from "lucide-react";
 import { toast } from "sonner";
 import { generateImage } from "@/services/huggingFaceService";
 import { ApiKeySetup } from "./ApiKeySetup";
+import { ApiDiagnostics } from "./ApiDiagnostics";
 
 interface GeneratedImage {
   url: string;
@@ -19,6 +20,7 @@ export const ImageGenerator = () => {
   const [generatedImage, setGeneratedImage] = useState<GeneratedImage | null>(null);
   const [apiKey, setApiKey] = useState<string | null>(null);
   const [showApiKeySetup, setShowApiKeySetup] = useState(false);
+  const [showDiagnostics, setShowDiagnostics] = useState(false);
 
   useEffect(() => {
     // Check for existing API key in localStorage
@@ -225,10 +227,28 @@ export const ImageGenerator = () => {
           </div>
         </Card>
 
+        {/* Diagnostics Section */}
+        <div className="max-w-4xl mx-auto mt-8">
+          <div className="text-center mb-4">
+            <Button
+              onClick={() => setShowDiagnostics(!showDiagnostics)}
+              variant="outline"
+              size="sm"
+              className="border-border/50 hover:border-primary transition-colors"
+            >
+              {showDiagnostics ? "Hide" : "Show"} API Diagnostics
+            </Button>
+          </div>
+          
+          {showDiagnostics && apiKey && (
+            <ApiDiagnostics apiKey={apiKey} />
+          )}
+        </div>
+
         {/* Footer */}
         <div className="text-center mt-12">
           <p className="text-sm text-muted-foreground">
-            Powered by Hugging Face AI • Built with ❤️ using Lovable
+            
           </p>
         </div>
       </div>

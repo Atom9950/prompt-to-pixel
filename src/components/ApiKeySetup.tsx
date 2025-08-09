@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { Key, ExternalLink, Eye, EyeOff } from "lucide-react";
 import { toast } from "sonner";
+import { ApiDiagnostics } from "./ApiDiagnostics";
 
 interface ApiKeySetupProps {
   onApiKeySet: (apiKey: string) => void;
@@ -12,6 +13,7 @@ interface ApiKeySetupProps {
 export const ApiKeySetup = ({ onApiKeySet }: ApiKeySetupProps) => {
   const [apiKey, setApiKey] = useState("");
   const [showApiKey, setShowApiKey] = useState(false);
+  const [showDiagnostics, setShowDiagnostics] = useState(false);
 
   const handleSubmit = () => {
     if (!apiKey.trim()) {
@@ -75,13 +77,25 @@ export const ApiKeySetup = ({ onApiKeySet }: ApiKeySetupProps) => {
                 </div>
               </div>
 
-              <Button
-                onClick={handleSubmit}
-                className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300"
-              >
-                <Key className="w-4 h-4 mr-2" />
-                Save API Key
-              </Button>
+              <div className="space-y-2">
+                <Button
+                  onClick={handleSubmit}
+                  className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300"
+                >
+                  <Key className="w-4 h-4 mr-2" />
+                  Save API Key
+                </Button>
+                
+                {apiKey.trim() && (
+                  <Button
+                    onClick={() => setShowDiagnostics(!showDiagnostics)}
+                    variant="outline"
+                    className="w-full border-border/50 hover:border-primary transition-colors"
+                  >
+                    {showDiagnostics ? "Hide" : "Test"} API Key
+                  </Button>
+                )}
+              </div>
             </div>
 
             <div className="space-y-3 pt-4 border-t border-border/50">
@@ -92,7 +106,7 @@ export const ApiKeySetup = ({ onApiKeySet }: ApiKeySetupProps) => {
                 variant="outline"
                 size="sm"
                 className="border-border/50 hover:border-primary transition-colors"
-                onClick={() => window.open("https://huggingface.co/join", "_blank")}
+                onClick={() => window.open("https://huggingface.co/settings/tokens", "_blank")}
               >
                 <ExternalLink className="w-4 h-4 mr-2" />
                 Get Free API Key
@@ -105,6 +119,12 @@ export const ApiKeySetup = ({ onApiKeySet }: ApiKeySetupProps) => {
             </div>
           </div>
         </Card>
+        
+        {showDiagnostics && apiKey.trim() && (
+          <div className="max-w-md mx-auto mt-6">
+            <ApiDiagnostics apiKey={apiKey} />
+          </div>
+        )}
       </div>
     </div>
   );
