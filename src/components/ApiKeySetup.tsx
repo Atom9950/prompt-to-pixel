@@ -53,10 +53,10 @@ export const ApiKeySetup = ({ onApiKeySet, onBack }: ApiKeySetupProps) => {
             {onBack && (
               <div className="flex justify-start mb-4">
                 <Button
-                  variant="ghost"
+                  variant="outline"
                   size="sm"
                   onClick={onBack}
-                  className="text-muted-foreground"
+                  className="border-border/50 hover:border-primary transition-colors"
                 >
                   <ArrowLeft className="w-4 h-4 mr-2" />
                   Back to Generator
