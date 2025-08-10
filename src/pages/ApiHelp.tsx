@@ -155,10 +155,10 @@ export default function ApiHelp() {
                   </p>
                   <div className="bg-muted/20 p-4 rounded-lg border border-border/50">
                     <p className="text-sm font-semibold mb-2">Your API key will look like:</p>
-                    <code className="text-sm bg-background/50 px-2 py-1 rounded">hf_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</code>
+                    <code className="text-sm bg-background/50 px-2 py-1 rounded break-all">hf_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</code>
                   </div>
-                  <div className="bg-yellow-50 border border-yellow-200 p-4 rounded-lg">
-                    <p className="text-sm text-yellow-800">
+                  <div className="bg-yellow-50 border border-yellow-200 p-3 sm:p-4 rounded-lg">
+                    <p className="text-sm text-yellow-800 leading-relaxed">
                       <strong>⚠️ Important:</strong> Copy your API key immediately as you won't be able to see it again. If you lose it, you'll need to create a new one.
                     </p>
                   </div>
