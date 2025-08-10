@@ -71,6 +71,10 @@ export const ImageGenerator = () => {
     setShowApiKeySetup(false);
   };
 
+  const handleBackToGenerator = () => {
+    setShowApiKeySetup(false);
+  };
+
   const handleSettingsClick = () => {
     setShowApiKeySetup(true);
   };
@@ -88,7 +92,12 @@ export const ImageGenerator = () => {
 
   // Show API key setup if no API key is set
   if (showApiKeySetup || !apiKey) {
-    return <ApiKeySetup onApiKeySet={handleApiKeySet} />;
+    return (
+      <ApiKeySetup 
+        onApiKeySet={handleApiKeySet} 
+        onBack={apiKey ? handleBackToGenerator : undefined} 
+      />
+    );
   }
 
   return (

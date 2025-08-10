@@ -1,21 +1,30 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
-import { Key, ExternalLink, Eye, EyeOff, HelpCircle } from "lucide-react";
+import { Key, ExternalLink, Eye, EyeOff, HelpCircle, ArrowLeft } from "lucide-react";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import { ApiDiagnostics } from "./ApiDiagnostics";
 
 interface ApiKeySetupProps {
   onApiKeySet: (apiKey: string) => void;
+  onBack?: () => void; // Optional callback to go back to image generator
 }
 
-export const ApiKeySetup = ({ onApiKeySet }: ApiKeySetupProps) => {
+export const ApiKeySetup = ({ onApiKeySet, onBack }: ApiKeySetupProps) => {
   const [apiKey, setApiKey] = useState("");
   const [showApiKey, setShowApiKey] = useState(false);
   const [showDiagnostics, setShowDiagnostics] = useState(false);
   const navigate = useNavigate();
+
+  // Load existing API key from localStorage when component mounts
+  useEffect(() => {
+    const savedApiKey = localStorage.getItem("hf_api_key");
+    if (savedApiKey) {
+      setApiKey(savedApiKey);
+    }
+  }, []);
 
   const handleSubmit = () => {
     if (!apiKey.trim()) {
@@ -40,6 +49,20 @@ export const ApiKeySetup = ({ onApiKeySet }: ApiKeySetupProps) => {
       <div className="relative z-10 container mx-auto px-4">
         <Card className="max-w-md mx-auto bg-gradient-card border-border/50 shadow-card backdrop-blur-glass">
           <div className="p-8 text-center space-y-6">
+            {/* Back button - only show if onBack callback is provided */}
+            {onBack && (
+              <div className="flex justify-start mb-4">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={onBack}
+                  className="text-muted-foreground"
+                >
+                  <ArrowLeft className="w-4 h-4 mr-2" />
+                  Back to Generator
+                </Button>
+              </div>
+            )}
             <div className="space-y-2">
               <div className="w-16 h-16 mx-auto bg-gradient-to-r from-red-500/30 via-blue-500/30 to-yellow-500/30 rounded-full flex items-center justify-center shadow-md">
                 <div className="w-14 h-14 bg-background/20 backdrop-blur-sm rounded-full flex items-center justify-center">
