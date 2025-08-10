@@ -2,8 +2,9 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
-import { Key, ExternalLink, Eye, EyeOff } from "lucide-react";
+import { Key, ExternalLink, Eye, EyeOff, HelpCircle } from "lucide-react";
 import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
 import { ApiDiagnostics } from "./ApiDiagnostics";
 
 interface ApiKeySetupProps {
@@ -14,6 +15,7 @@ export const ApiKeySetup = ({ onApiKeySet }: ApiKeySetupProps) => {
   const [apiKey, setApiKey] = useState("");
   const [showApiKey, setShowApiKey] = useState(false);
   const [showDiagnostics, setShowDiagnostics] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = () => {
     if (!apiKey.trim()) {
@@ -102,15 +104,26 @@ export const ApiKeySetup = ({ onApiKeySet }: ApiKeySetupProps) => {
               <p className="text-xs text-muted-foreground">
                 Don't have a Hugging Face account?
               </p>
-              <Button
-                variant="outline"
-                size="sm"
-                className="border-border/50 hover:border-primary transition-colors"
-                onClick={() => window.open("https://huggingface.co/settings/tokens", "_blank")}
-              >
-                <ExternalLink className="w-4 h-4 mr-2" />
-                Get Free API Key
-              </Button>
+              <div className="flex gap-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="flex-1 border-border/50 hover:border-primary transition-colors"
+                  onClick={() => window.open("https://huggingface.co/settings/tokens", "_blank")}
+                >
+                  <ExternalLink className="w-4 h-4 mr-2" />
+                  Get Free API Key
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="flex-1 border-border/50 hover:border-primary transition-colors"
+                  onClick={() => navigate("/api-help")}
+                >
+                  <HelpCircle className="w-4 h-4 mr-2" />
+                  Need Help?
+                </Button>
+              </div>
             </div>
 
             <div className="text-xs text-muted-foreground space-y-1">
