@@ -123,27 +123,31 @@ export const ImageGenerator = () => {
           </p>
         </div>
 
-        {/* Generation Card */}
-        <Card className="max-w-4xl mx-auto bg-gradient-card border-border/50 shadow-card backdrop-blur-glass">
-          <div className="p-8">
-            {/* Input Section */}
-            <div className="space-y-6 mb-8">
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-foreground">
-                  Describe your image
-                </label>
-                <div className="flex gap-4">
-                  <Input
-                    value={prompt}
-                    onChange={(e) => setPrompt(e.target.value)}
-                    placeholder="A majestic mountain landscape at sunset..."
-                    className="flex-1 bg-muted/30 border-border/50 focus:border-primary transition-colors"
-                    onKeyDown={(e) => e.key === "Enter" && !isGenerating && handleGenerateImage()}
-                  />
+        {/* Two Grid Layout */}
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Left Column */}
+          <div className="space-y-6">
+            {/* Prompt Input Grid */}
+            <Card className="bg-gradient-card border-border/50 shadow-card backdrop-blur-glass">
+              <div className="p-6">
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-foreground">
+                      Describe your image
+                    </label>
+                    <Input
+                      value={prompt}
+                      onChange={(e) => setPrompt(e.target.value)}
+                      placeholder="A majestic mountain landscape at sunset..."
+                      className="bg-muted/30 border-border/50 focus:border-primary transition-colors"
+                      onKeyDown={(e) => e.key === "Enter" && !isGenerating && handleGenerateImage()}
+                    />
+                  </div>
+                  
                   <Button
                     onClick={handleGenerateImage}
                     disabled={isGenerating || !prompt.trim()}
-                    className="bg-gradient-primary hover:shadow-glow transition-all duration-300 px-8"
+                    className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300"
                   >
                     {isGenerating ? (
                       <>
@@ -153,79 +157,124 @@ export const ImageGenerator = () => {
                     ) : (
                       <>
                         <Sparkles className="w-4 h-4 mr-2" />
-                        Generate
+                        Generate Image
                       </>
                     )}
                   </Button>
+
+                  {/* Generated Image Info */}
+                  {generatedImage && !isGenerating && (
+                    <div className="space-y-4 pt-4 border-t border-border/50">
+                      <div className="space-y-2">
+                        <p className="text-sm font-medium">Generated from:</p>
+                        <p className="text-sm text-muted-foreground italic">"{generatedImage.prompt}"</p>
+                        <p className="text-xs text-muted-foreground">
+                          Created: {generatedImage.timestamp.toLocaleString()}
+                        </p>
+                      </div>
+                      
+                      <div className="flex gap-2">
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => handleGenerateImage()}
+                          className="flex-1 border-border/50 hover:border-primary transition-colors"
+                        >
+                          <RefreshCw className="w-4 h-4 mr-2" />
+                          Regenerate
+                        </Button>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={downloadImage}
+                          className="flex-1 border-border/50 hover:border-primary transition-colors"
+                        >
+                          <Download className="w-4 h-4 mr-2" />
+                          Download
+                        </Button>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
-            </div>
+            </Card>
 
-            {/* Image Display Section */}
-            <div className="space-y-4">
-              {isGenerating && (
-                <Card className="aspect-square bg-muted/20 border-dashed border-border/50 flex items-center justify-center">
-                  <div className="text-center space-y-4">
-                    <div className="w-16 h-16 mx-auto border-4 border-primary border-t-transparent rounded-full animate-spin-slow" />
-                    <div className="space-y-2">
-                      <p className="text-lg font-medium">Creating your masterpiece...</p>
-                      <p className="text-sm text-muted-foreground">This may take a few moments</p>
-                    </div>
-                  </div>
-                </Card>
-              )}
-
-              {generatedImage && !isGenerating && (
+            {/* Pro Tips Grid */}
+            <Card className="bg-gradient-to-br from-sky-50 to-sky-100 border-sky-200 shadow-lg">
+              <div className="p-6">
                 <div className="space-y-4">
-                  <Card className="overflow-hidden bg-gradient-card border-border/50">
-                    <img
-                      src={generatedImage.url}
-                      alt={generatedImage.prompt}
-                      className="w-full h-auto rounded-lg"
-                    />
-                  </Card>
-                  
-                  <div className="flex items-center justify-between">
-                    <div className="space-y-1">
-                      <p className="text-sm font-medium">Generated from:</p>
-                      <p className="text-sm text-muted-foreground italic">"{generatedImage.prompt}"</p>
+                  <div className="flex items-center gap-2">
+                    <div className="w-6 h-6 bg-sky-500 rounded-full flex items-center justify-center">
+                      <span className="text-white text-xs font-bold">💡</span>
                     </div>
-                    
-                    <div className="flex gap-2">
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => handleGenerateImage()}
-                        className="border-border/50 hover:border-primary transition-colors"
-                      >
-                        <RefreshCw className="w-4 h-4 mr-2" />
-                        Regenerate
-                      </Button>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={downloadImage}
-                        className="border-border/50 hover:border-primary transition-colors"
-                      >
-                        <Download className="w-4 h-4 mr-2" />
-                        Download
-                      </Button>
+                    <h3 className="text-lg font-semibold text-sky-900">Pro Tips</h3>
+                  </div>
+                  
+                  <div className="space-y-3 text-sm text-sky-800">
+                    <div className="flex items-start gap-2">
+                      <span className="text-sky-500 font-bold">•</span>
+                      <p>Be specific: Include details like lighting, style, colors, and mood for better results.</p>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <span className="text-sky-500 font-bold">•</span>
+                      <p>Add style keywords: Try <strong>photorealistic</strong>, <strong>oil painting</strong>, <strong>digital art</strong>, or <strong>watercolor</strong>.</p>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <span className="text-sky-500 font-bold">•</span>
+                      <p>Describe composition: Use terms like <strong>close-up</strong>, <strong>wide shot</strong>, <strong>bird's eye view</strong>.</p>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <span className="text-sky-500 font-bold">•</span>
+                      <p>Set the mood: Words like <strong>dramatic</strong>, <strong>calm</strong>, <strong>vibrant</strong>, or <strong>mysterious</strong>.</p>
                     </div>
                   </div>
                 </div>
-              )}
-
-              {!generatedImage && !isGenerating && (
-                <Card className="aspect-square bg-muted/10 border-dashed border-border/30 flex items-center justify-center">
-                  <div className="text-center space-y-2">
-                    <Sparkles className="w-12 h-12 mx-auto text-muted-foreground/50" />
-                    <p className="text-muted-foreground">Your generated image will appear here</p>
-                  </div>
-                </Card>
-              )}
-            </div>
+              </div>
+            </Card>
           </div>
-        </Card>
+
+          {/* Right Grid - Image Preview */}
+          <Card className="bg-gradient-card border-border/50 shadow-card backdrop-blur-glass">
+            <div className="p-8">
+              <div className="space-y-4">
+                <h3 className="text-lg font-medium text-foreground">Image Preview</h3>
+                
+                {isGenerating && (
+                  <div className="aspect-square bg-muted/20 border-dashed border-border/50 flex items-center justify-center rounded-lg">
+                    <div className="text-center space-y-4">
+                      <div className="w-16 h-16 mx-auto border-4 border-primary border-t-transparent rounded-full animate-spin-slow" />
+                      <div className="space-y-2">
+                        <p className="text-lg font-medium">Creating your masterpiece...</p>
+                        <p className="text-sm text-muted-foreground">This may take a few moments</p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {generatedImage && !isGenerating && (
+                  <div className="space-y-4">
+                    <div className="overflow-hidden rounded-lg bg-gradient-card border-border/50">
+                      <img
+                        src={generatedImage.url}
+                        alt={generatedImage.prompt}
+                        className="w-full h-auto rounded-lg"
+                      />
+                    </div>
+                  </div>
+                )}
+
+                {!generatedImage && !isGenerating && (
+                  <div className="aspect-square bg-muted/10 border-dashed border-border/30 flex items-center justify-center rounded-lg">
+                    <div className="text-center space-y-2">
+                      <Sparkles className="w-12 h-12 mx-auto text-muted-foreground/50" />
+                      <p className="text-muted-foreground">Your generated image will appear here</p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </Card>
+        </div>
 
         {/* Diagnostics Section */}
         <div className="max-w-4xl mx-auto mt-8">
