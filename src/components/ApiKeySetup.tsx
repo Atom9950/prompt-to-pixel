@@ -31,19 +31,22 @@ export const ApiKeySetup = ({ onApiKeySet }: ApiKeySetupProps) => {
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden flex items-center justify-center">
-      {/* Gradient background effects */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-primary-glow/10" />
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary-glow/20 rounded-full blur-3xl" />
+      {/* Red Blue Golden gradient background effects */}
+      <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 via-background via-blue-500/10 to-yellow-500/10" />
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-red-500/20 rounded-full blur-3xl" />
+      <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-yellow-500/20 rounded-full blur-3xl" />
       
       <div className="relative z-10 container mx-auto px-4">
         <Card className="max-w-md mx-auto bg-gradient-card border-border/50 shadow-card backdrop-blur-glass">
           <div className="p-8 text-center space-y-6">
             <div className="space-y-2">
-              <div className="w-16 h-16 mx-auto bg-gradient-primary rounded-full flex items-center justify-center">
-                <Key className="w-8 h-8 text-primary-foreground" />
+              <div className="w-16 h-16 mx-auto bg-gradient-to-r from-red-500/30 via-blue-500/30 to-yellow-500/30 rounded-full flex items-center justify-center shadow-md">
+                <div className="w-14 h-14 bg-background/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                  <Key className="w-8 h-8 text-foreground/90 drop-shadow-sm" />
+                </div>
               </div>
-              <h2 className="text-2xl font-bold">Setup Required</h2>
+              <h2 className="text-3xl font-bold bg-gradient-to-r from-red-500 via-blue-500 to-yellow-500 bg-clip-text text-transparent">Setup Required</h2>
               <p className="text-muted-foreground">
                 Enter your Hugging Face API key to start generating images
               </p>

@@ -18,10 +18,11 @@ export default function ApiHelp() {
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
-      {/* Gradient background effects */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-primary-glow/10" />
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary-glow/20 rounded-full blur-3xl" />
+      {/* Red Blue Golden gradient background effects */}
+      <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 via-background via-blue-500/10 to-yellow-500/10" />
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-red-500/20 rounded-full blur-3xl" />
+      <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-yellow-500/20 rounded-full blur-3xl" />
       
       <div className="relative z-10 container mx-auto px-4 py-8">
         {/* Header */}
@@ -36,7 +37,7 @@ export default function ApiHelp() {
           </Button>
           
           <div className="text-center space-y-4">
-            <h1 className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-red-500 via-blue-500 to-yellow-500 bg-clip-text text-transparent">
               How to Get Your Hugging Face API Key
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -51,8 +52,8 @@ export default function ApiHelp() {
           <Card className="bg-gradient-card border-border/50 shadow-card backdrop-blur-glass">
             <div className="p-8">
               <div className="flex items-start gap-4">
-                <div className="w-8 h-8 bg-gradient-primary rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-primary-foreground font-bold">1</span>
+                <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-white font-bold">1</span>
                 </div>
                 <div className="space-y-4 flex-1">
                   <h3 className="text-xl font-semibold">Create a Hugging Face Account</h3>
@@ -76,8 +77,8 @@ export default function ApiHelp() {
           <Card className="bg-gradient-card border-border/50 shadow-card backdrop-blur-glass">
             <div className="p-8">
               <div className="flex items-start gap-4">
-                <div className="w-8 h-8 bg-gradient-primary rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-primary-foreground font-bold">2</span>
+                <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-white font-bold">2</span>
                 </div>
                 <div className="space-y-4 flex-1">
                   <h3 className="text-xl font-semibold">Navigate to Access Tokens</h3>
@@ -104,8 +105,8 @@ export default function ApiHelp() {
           <Card className="bg-gradient-card border-border/50 shadow-card backdrop-blur-glass">
             <div className="p-8">
               <div className="flex items-start gap-4">
-                <div className="w-8 h-8 bg-gradient-primary rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-primary-foreground font-bold">3</span>
+                <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-white font-bold">3</span>
                 </div>
                 <div className="space-y-4 flex-1">
                   <h3 className="text-xl font-semibold">Create a New Token</h3>
@@ -144,8 +145,8 @@ export default function ApiHelp() {
           <Card className="bg-gradient-card border-border/50 shadow-card backdrop-blur-glass">
             <div className="p-8">
               <div className="flex items-start gap-4">
-                <div className="w-8 h-8 bg-gradient-primary rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-primary-foreground font-bold">4</span>
+                <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-white font-bold">4</span>
                 </div>
                 <div className="space-y-4 flex-1">
                   <h3 className="text-xl font-semibold">Copy Your API Key</h3>
@@ -170,8 +171,8 @@ export default function ApiHelp() {
           <Card className="bg-gradient-card border-border/50 shadow-card backdrop-blur-glass">
             <div className="p-8">
               <div className="flex items-start gap-4">
-                <div className="w-8 h-8 bg-gradient-primary rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-primary-foreground font-bold">5</span>
+                <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-white font-bold">5</span>
                 </div>
                 <div className="space-y-4 flex-1">
                   <h3 className="text-xl font-semibold">Enter Your API Key</h3>
@@ -193,24 +194,24 @@ export default function ApiHelp() {
 
         {/* FAQ Section */}
         <div className="max-w-4xl mx-auto mt-12">
-          <Card className="bg-gradient-to-br from-sky-50 to-sky-100 border-sky-200 shadow-lg">
+          <Card className="bg-gradient-to-br from-red-50 via-blue-50 to-yellow-50 border-red-200 shadow-lg">
             <div className="p-8">
-              <h3 className="text-xl font-semibold text-sky-900 mb-6">Frequently Asked Questions</h3>
-              <div className="space-y-4 text-sky-800">
+              <h3 className="text-xl font-semibold bg-gradient-to-r from-red-700 via-blue-700 to-yellow-700 bg-clip-text text-transparent mb-6">Frequently Asked Questions</h3>
+              <div className="space-y-4 text-gray-700">
                 <div>
-                  <h4 className="font-semibold mb-2">Is it really free?</h4>
+                  <h4 className="font-semibold mb-2 text-red-600">Is it really free?</h4>
                   <p className="text-sm">Yes! Hugging Face provides 1000 free API calls per month, which is plenty for personal use.</p>
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-2">Is my API key secure?</h4>
+                  <h4 className="font-semibold mb-2 text-blue-600">Is my API key secure?</h4>
                   <p className="text-sm">Your API key is stored locally in your browser and never sent to our servers. Only you have access to it.</p>
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-2">What if I exceed the free limit?</h4>
+                  <h4 className="font-semibold mb-2 text-yellow-600">What if I exceed the free limit?</h4>
                   <p className="text-sm">You can upgrade to a paid plan on Hugging Face for unlimited usage, or wait for the monthly reset.</p>
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-2">Can I change my API key later?</h4>
+                  <h4 className="font-semibold mb-2 text-red-600">Can I change my API key later?</h4>
                   <p className="text-sm">Yes! You can update your API key anytime by clicking the settings button in the app.</p>
                 </div>
               </div>

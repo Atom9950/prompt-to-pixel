@@ -93,10 +93,11 @@ export const ImageGenerator = () => {
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
-      {/* Gradient background effects */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-primary-glow/10" />
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary-glow/20 rounded-full blur-3xl" />
+      {/* Red Blue Golden gradient background effects */}
+      <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 via-background via-blue-500/10 to-yellow-500/10" />
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-red-500/20 rounded-full blur-3xl" />
+      <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-yellow-500/20 rounded-full blur-3xl" />
       
       <div className="relative z-10 container mx-auto px-4 py-8">
         {/* Header */}
@@ -112,9 +113,9 @@ export const ImageGenerator = () => {
           </Button>
           
           <div className="flex items-center justify-center gap-2 mb-4">
-            <Sparkles className="w-8 h-8 text-primary animate-pulse-glow" />
-            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-              AI Image Generator
+            {/* <Sparkles className="w-8 h-8 text-black animate-pulse-glow" /> */}
+            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-red-500 via-blue-500 to-yellow-500 bg-clip-text text-transparent">
+              Prompt to Pixel
             </h1>
           </div>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -200,31 +201,31 @@ export const ImageGenerator = () => {
             </Card>
 
             {/* Pro Tips Grid */}
-            <Card className="bg-gradient-to-br from-sky-50 to-sky-100 border-sky-200 shadow-lg">
+            <Card className="bg-gradient-to-br from-red-50 via-blue-50 to-yellow-50 border-red-200 shadow-lg">
               <div className="p-6">
                 <div className="space-y-4">
                   <div className="flex items-center gap-2">
-                    <div className="w-6 h-6 bg-sky-500 rounded-full flex items-center justify-center">
+                    <div className="w-6 h-6 bg-gradient-to-r from-red-300 via-blue-300 to-yellow-300 rounded-full flex items-center justify-center">
                       <span className="text-white text-xs font-bold">💡</span>
                     </div>
-                    <h3 className="text-lg font-semibold text-sky-900">Pro Tips</h3>
+                    <h3 className="text-lg font-semibold bg-black bg-clip-text text-transparent">Pro Tips</h3>
                   </div>
                   
-                  <div className="space-y-3 text-sm text-sky-800">
+                  <div className="space-y-3 text-sm text-gray-700">
                     <div className="flex items-start gap-2">
-                      <span className="text-sky-500 font-bold">•</span>
+                      <span className="text-red-500 font-bold">•</span>
                       <p>Be specific: Include details like lighting, style, colors, and mood for better results.</p>
                     </div>
                     <div className="flex items-start gap-2">
-                      <span className="text-sky-500 font-bold">•</span>
+                      <span className="text-blue-500 font-bold">•</span>
                       <p>Add style keywords: Try <strong>photorealistic</strong>, <strong>oil painting</strong>, <strong>digital art</strong>, or <strong>watercolor</strong>.</p>
                     </div>
                     <div className="flex items-start gap-2">
-                      <span className="text-sky-500 font-bold">•</span>
+                      <span className="text-yellow-600 font-bold">•</span>
                       <p>Describe composition: Use terms like <strong>close-up</strong>, <strong>wide shot</strong>, <strong>bird's eye view</strong>.</p>
                     </div>
                     <div className="flex items-start gap-2">
-                      <span className="text-sky-500 font-bold">•</span>
+                      <span className="text-red-500 font-bold">•</span>
                       <p>Set the mood: Words like <strong>dramatic</strong>, <strong>calm</strong>, <strong>vibrant</strong>, or <strong>mysterious</strong>.</p>
                     </div>
                   </div>
